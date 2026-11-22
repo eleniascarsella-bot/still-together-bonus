@@ -132,21 +132,23 @@
 
     <div class="card" id="get">
       <div id="ask">
-        <h2>Where should we send your printables?</h2>
-        <p>Enter your email and the download link arrives in your inbox within a minute.</p>
+        <h2>Your printables are ready</h2>
+        <p>No sign-up needed. Download them right now, in US Letter and A4:</p>
+        <a class="dl" href="https://drive.google.com/drive/folders/1bt-nWeoAwm41E-98PQmDV1yLBI5FlHcR" target="_blank" rel="noopener">Download Keep Praying Together</a>
+        <p style="margin-top:26px;border-top:1px solid var(--line);padding-top:18px"><b>Optional:</b> leave your email if you'd also like the link in your inbox and an occasional note from Lydia.</p>
         <form class="signup" id="signup" novalidate>
           <label class="hp" aria-hidden="true">Website <input type="text" name="website" tabindex="-1" autocomplete="off"></label>
           <input type="email" name="email" id="email" placeholder="Your email address" autocomplete="email" required aria-label="Your email address">
           <label class="consent"><input type="checkbox" name="consent" id="consent" value="yes" required>
-            <span>Yes, send me the printables and occasional emails from Lydia. I can unsubscribe anytime.</span></label>
-          <button type="submit" id="go">Send me the printables</button>
+            <span>Yes, email me the link and occasional notes from Lydia. I can unsubscribe anytime.</span></label>
+          <button type="submit" id="go">Email me the link</button>
           <div class="msg" id="msg" role="status"></div>
         </form>
       </div>
 
       <div class="done" id="done">
         <p class="script" style="font-size:38px">Thank you!</p>
-        <h2>Your printables are on their way</h2>
+        <h2>Check your inbox</h2>
         <p id="doneText">We've emailed you the link (check Promotions or Spam if you can't see it). You can also download them right now:</p>
         <a class="dl" id="l1" href="#" target="_blank" rel="noopener">Keep Praying Together (US Letter &amp; A4)</a>
       </div>
@@ -181,8 +183,8 @@
       <h2 class="sec-title">Three easy steps</h2>
     </div>
     <div class="steps">
-      <div class="step"><h3>Enter your email</h3><p>Use the form at the top of this page. It takes ten seconds.</p></div>
-      <div class="step"><h3>Open the welcome email</h3><p>It has the download link for both paper sizes. If you can't see it, check your Spam or Promotions folder.</p></div>
+      <div class="step"><h3>Click Download</h3><p>Use the button at the top of this page. No sign-up needed.</p></div>
+      <div class="step"><h3>Choose your paper size</h3><p>Open the US Letter or the A4 file, whichever fits your printer.</p></div>
       <div class="step"><h3>Print and pray together</h3><p>Print at home, keep the pages where you pray, and come back to them whenever you like.</p></div>
     </div>
   </div>
@@ -198,9 +200,9 @@
       <details><summary>Does it cost anything?</summary><p>No. It's a free gift for readers of Still Together.</p></details>
       <details><summary>What paper size are the printables?</summary><p>Both: you'll find a US Letter (8.5 × 11 in) file and an A4 file.</p></details>
       <details><summary>Can we print the pages more than once?</summary><p>Yes, as many times as you like for your own home. Please don't resell or share the files.</p></details>
-      <details><summary>The email hasn't arrived. What now?</summary><p>Give it a couple of minutes and check your Spam or Promotions folder. If it's still missing, sign up again making sure your email is spelled correctly.</p></details>
+      <details><summary>Do I have to give my email?</summary><p>No. The download button works for everyone. The email form is optional, for readers who want the link in their inbox and an occasional note from Lydia.</p></details>
     </div>
-    <div class="cta"><a class="btn" href="#get">Send me the printables</a></div>
+    <div class="cta"><a class="btn" href="#get">Download the printables</a></div>
   </div>
 </section>
 
@@ -222,7 +224,7 @@
     msg.textContent = "";
     const email = form.email.value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { msg.textContent = "Please enter a valid email address."; form.email.focus(); return; }
-    if (!form.consent.checked) { msg.textContent = "Please tick the box so we can email you the printables."; return; }
+    if (!form.consent.checked) { msg.textContent = "Please tick the box so we can email you."; return; }
 
     btn.disabled = true; btn.textContent = "Sending…";
     const body = new URLSearchParams({ email, consent: "yes", website: form.website.value, source: new URLSearchParams(location.search).get("src") || "book-qr" });
@@ -236,7 +238,7 @@
       document.getElementById("done").classList.add("show");
     } catch (e) {
       msg.textContent = "Something went wrong. Please check your connection and try again.";
-      btn.disabled = false; btn.textContent = "Send me the printables";
+      btn.disabled = false; btn.textContent = "Email me the link";
     }
   });
 </script>
